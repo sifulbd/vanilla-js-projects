@@ -8,20 +8,22 @@
 <body>
 
     <h2>Hello Bangladesh</h2>
+
+    <script src="app.js"></script>
     <script>
 
         // Iterator
-        function nameIterator(names) {
-            let nextIndex = 0;
+        // function nameIterator(names) {
+        //     let nextIndex = 0;
 
-            return {
-                next: function() {
-                    return nextIndex < names.length ? { value: names[nextIndex++], done: false} : {done: true}
-                }
-            }
-        }
-        const namesArr = ['Jack', 'Jill', 'John'];
-        const names = nameIterator(namesArr);
+        //     return {
+        //         next: function() {
+        //             return nextIndex < names.length ? { value: names[nextIndex++], done: false} : {done: true}
+        //         }
+        //     }
+        // }
+        // const namesArr = ['Jack', 'Jill', 'John'];
+        // const names = nameIterator(namesArr);
         // console.log(names.next().value);
         // console.log(names.next().value);
         // console.log(names.next().value);
@@ -29,21 +31,21 @@
 
         //Generator
 
-        function* sayName() {
-            yield 'Jack';
-            yield 'Jill';
-            yield 'Nill';
-        }
-        const gen = sayName();
-        // console.log(gen.next());
+        // function* sayName() {
+        //     yield 'Jack';
+        //     yield 'Jill';
+        //     yield 'Nill';
+        // }
+        // const gen = sayName();
+        // // console.log(gen.next());
 
-        function* countId() {
-            let coount = 1;
-            while(true) {
-                yield coount++;
-            }
-        }
-        const ids = countId();
+        // function* countId() {
+        //     let coount = 1;
+        //     while(true) {
+        //         yield coount++;
+        //     }
+        // }
+        // const ids = countId();
         // console.log(ids.next().value);
         // console.log(ids.next().value);
 
@@ -76,21 +78,21 @@
     // // console.log(map1.get(key1));
     // console.log(map1.get(key2));
 
-    const contrText = (function () {
-        let text = "hello World";
-        const changeText = function() {
-            const headText = document.querySelector('h2');
-            headText.textContent = text;
-        }
+    // const contrText = (function () {
+    //     let text = "hello World";
+    //     const changeText = function() {
+    //         const headText = document.querySelector('h2');
+    //         headText.textContent = text;
+    //     }
 
-        return {
-            callChangetext: function() {
-                changeText();
-                console.log(text);
-            }
-        }
-    })();
-    contrText.callChangetext();
+    //     return {
+    //         callChangetext: function() {
+    //             changeText();
+    //             console.log(text);
+    //         }
+    //     }
+    // })();
+    // contrText.callChangetext();
 
     
 
