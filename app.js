@@ -132,21 +132,27 @@ let movies = [
 // })
 // console.log(sunOfNums);
 
-const sum = (...nums) => nums.reduce((toatl, current) => toatl + current); 
-const arr1 = ['hello', 4, 'another', true];
-const arr2 = ['nai', 4, true];
+// const sum = (...nums) => nums.reduce((toatl, current) => toatl + current); 
+// const arr1 = ['hello', 4, 'another', true];
+// const arr2 = ['nai', 4, true];
 
-const arrMarge = [...arr1, ...arr2];
+// const arrMarge = [...arr1, ...arr2];
 
-const obj1 = {
-    name: 'naina',
-    age: 23
-}
-const obj2 = {
-    name: 'Wadia',
-    profession: 'footballer'
-}
+// const obj1 = {
+//     name: 'naina',
+//     age: 23
+// }
+// const obj2 = {
+//     name: 'Wadia',
+//     profession: 'footballer'
+// }
 
-const twoObj = {
-    ...obj1, ...obj2
+// const twoObj = {
+//     ...obj1, ...obj2
+// }
+
+const arr = [23, 34, 67, 78, 90];
+
+function pick(arr){
+    return Math.random();
 }
