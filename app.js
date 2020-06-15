@@ -151,8 +151,25 @@ let movies = [
 //     ...obj1, ...obj2
 // }
 
-const arr = [23, 34, 67, 78, 90];
+const arr1 = [23, 34, 67, 78, 90];
 
-function pick(arr){
-    return Math.random();
+function pick(arr1){
+    const idx  = Math.floor(Math.random() * arr1.length);
+    return arr1[idx];
 }
+function getCard() {
+  const values = ['1','2','3','4','5','6','7','8','9','10','J','Q','K','A']; 
+  const suits = ['clubs', 'spades', 'hearts', 'diamond'];
+  const value = pick(values);
+  const suit = pick(suits);
+
+  return {
+      value,
+      suit
+  };
+}
+const docs = document.querySelector('h2').innerHTML = `
+    Value is ${getCard().value} and Your Suite is ${getCard().suit}
+`; 
+
+
