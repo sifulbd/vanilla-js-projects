@@ -37,12 +37,12 @@
         // console.log(ids.next().value);
 
 
-        let a, b;
+    let a, b;
 
 
-        [a,b, ...art] = [100, 200, 300, 40];
+    [a,b, ...art] = [100, 200, 300, 40];
 
-        ({a, ...bt} = {a: 10, b: 20, c: 30});
+    ({a, ...bt} = {a: 10, b: 20, c: 30});
 
     // let person1,
     //     peron2, person3;
@@ -151,25 +151,47 @@ let movies = [
 //     ...obj1, ...obj2
 // }
 
-const arr1 = [23, 34, 67, 78, 90];
+// const arr1 = [23, 34, 67, 78, 90];
 
-function pick(arr1){
-    const idx  = Math.floor(Math.random() * arr1.length);
-    return arr1[idx];
+// function pick(arr1){
+//     const idx  = Math.floor(Math.random() * arr1.length);
+//     return arr1[idx];
+// }
+// function getCard() {
+//   const values = ['1','2','3','4','5','6','7','8','9','10','J','Q','K','A']; 
+//   const suits = ['clubs', 'spades', 'hearts', 'diamond'];
+//   const value = pick(values);
+//   const suit = pick(suits);
+
+//   return {
+//       value,
+//       suit
+//   };
+// }
+// const docs = document.querySelector('h2').innerHTML = `
+//     Value is ${getCard().value} and Your Suite is ${getCard().suit}
+// `; 
+
+const list = document.querySelectorAll('ul');
+const obj = {
+    a:1,
+    b:2,
+    c:3,
+    d:4,
+    e:5
+};
+let named = '';
+for(let obs in obj){
+    // named += ;
+    named += `<li> ${obs} and value is ${obj[obs]} </li>`;
 }
-function getCard() {
-  const values = ['1','2','3','4','5','6','7','8','9','10','J','Q','K','A']; 
-  const suits = ['clubs', 'spades', 'hearts', 'diamond'];
-  const value = pick(values);
-  const suit = pick(suits);
-
-  return {
-      value,
-      suit
-  };
-}
-const docs = document.querySelector('h2').innerHTML = `
-    Value is ${getCard().value} and Your Suite is ${getCard().suit}
-`; 
+document.querySelector('ul').innerHTML = named;
+const input  = document.querySelector('#input');
+input.addEventListener('keydown', function(){
+    console.log(input.value);
+})
 
 
+// for(let i = 0; i < list.length; i++) {
+//     list[i].innerText = "Hi there"
+// }
