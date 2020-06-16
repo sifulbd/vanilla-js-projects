@@ -172,26 +172,44 @@ let movies = [
 //     Value is ${getCard().value} and Your Suite is ${getCard().suit}
 // `; 
 
-const list = document.querySelectorAll('ul');
-const obj = {
-    a:1,
-    b:2,
-    c:3,
-    d:4,
-    e:5
-};
-let named = '';
-for(let obs in obj){
-    // named += ;
-    named += `<li> ${obs} and value is ${obj[obs]} </li>`;
-}
-document.querySelector('ul').innerHTML = named;
-const input  = document.querySelector('#input');
-input.addEventListener('keydown', function(){
-    console.log(input.value);
-})
+// const list = document.querySelectorAll('ul');
+// const obj = {
+//     a:1,
+//     b:2,
+//     c:3,
+//     d:4,
+//     e:5
+// };
+// let named = '';
+// for(let obs in obj){
+//     // named += ;
+//     named += `<li> ${obs} and value is ${obj[obs]} </li>`;
+// }
+// document.querySelector('ul').innerHTML = named;
+// const input  = document.querySelector('#input');
+// input.addEventListener('keydown', function(){
+//     console.log(input.value);
+// })
 
 
 // for(let i = 0; i < list.length; i++) {
 //     list[i].innerText = "Hi there"
 // }
+
+let counter = 0;
+const count = document.querySelector('#count');
+const btns = document.querySelectorAll('.btn');
+btns.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+        if(e.currentTarget.classList.contains('increase')){
+            counter++;
+        }
+        if(e.currentTarget.classList.contains('decrease')){
+            counter--;
+        }
+        if(e.currentTarget.classList.contains('reset')){
+            counter = 0;
+        }
+        count.textContent = counter;
+    });
+});
