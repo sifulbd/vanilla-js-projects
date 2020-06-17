@@ -211,5 +211,5 @@ btns.forEach(function(btn){
             counter = 0;
         }
         count.textContent = counter;
-    });
+    }); 
 });
