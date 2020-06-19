@@ -214,3 +214,87 @@ btns.forEach(function(btn){
     }); 
 });
 
+// 
+
+const reviews = [
+    {
+        id: 1,
+        name: "Susan Smith",
+        job: "Web Developer",
+        content: "Lorem ipsum dolor sit amet consecteturdipisicing elit. Sunt eveniet consectetur quos iure qui exercitationem ducimus velit ",
+        img: "https://res.cloudinary.com/idemo/image/upload/c_fill,f_auto,h_300,q_auto,w_270/car_lady_dog.webp"
+    },
+    {
+        id: 2,
+        name: "John Doe",
+        job: "Web Designer",
+        content: "Lorem ipsum dolor sit amet consecteturdipisicing elit. Sunt eveniet consectetur quos iure qui exercitationem ducimus velit ",
+        img: "https://res.cloudinary.com/idemo/image/upload/c_fill,h_300,q_auto:eco,w_270/woman.jpg"
+    },
+    {
+        id: 2,
+        name: "William Doe",
+        job: "Digital marketner",
+        content: "Lorem ipsum dolor sit amet consecteturdipisicing elit. Sunt eveniet consectetur quos iure qui exercitationem ducimus velit ",
+        img: "https://res.cloudinary.com/idemo/image/upload/c_fill,h_300,q_auto,w_270/friends.jpg"
+    }
+];
+
+
+const avtImg = document.querySelector('.avt-img');
+const avtName = document.querySelector('.avt-name');
+const avtPosition = document.querySelector('.avt-position');
+const avtContent = document.querySelector('.avt-content');
+
+
+const avtPrevBtn = document.querySelector('#prev');
+const avtNextBtn = document.querySelector('#next');
+const avtRandomBtn = document.querySelector('#random');
+
+let currentItem = 0;
+
+window.addEventListener('DOMContentLoaded', function() {
+    showPerson(currentItem);
+});
+
+function showPerson(person){
+    const item = reviews[person];
+    avtImg.src = item.img;
+    avtName.textContent = item.name;
+    avtPosition.textContent = item.job;
+    avtContent.textContent = item.content;
+}
+
+avtNextBtn.addEventListener('click', function(){
+    currentItem++;
+    if(currentItem > reviews.length - 1){
+        currentItem = reviews.length - 1;
+    }
+    showPerson(currentItem);
+})
+avtPrevBtn.addEventListener('click', function(){
+    currentItem--;
+    if(currentItem < 0){
+        currentItem = 0;
+    }
+    showPerson(currentItem);
+})
+avtRandomBtn.addEventListener('click', function(){
+    currentItem = Math.floor(Math.random() * reviews.length)
+    showPerson(currentItem);
+})
+
+
+let slide = 0;
+const sliders = document.querySelectorAll('.review2');
+const numsliders = sliders.length;
+const next2 = document.querySelector('#next2');
+
+function showPerson2(person){
+    const item = sliders[person];
+}
+
+next2.addEventListener('click', function(){
+    slide++;
+    showPerson2(slide); 
+})

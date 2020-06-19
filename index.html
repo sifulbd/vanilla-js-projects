@@ -9,27 +9,78 @@
     .center {
         text-align: center;
     }
+    .review2{
+        display: none;
+    }
+    .review2.current {
+        display: block;
+    }
 </style>
 <body>
 
-    <h2>Hello Bangladesh</h2>
-
-    <ul>
-        <li>I am bangladesh</li>
-        <li>I am india</li>
-        <li>I am germany</li>
-        <li>I am london</li>
-        <li>I am canada</li>
-    </ul>
-
-    <input type="text" id="input">
-
-
+    <h1>Button counter</h1>
     <div class="boxes center">
         <h2 id="count"> 0 </h2>
         <button class="btn increase">Increase</button>
         <button class="btn reset">reset</button>
         <button class="btn decrease">Decrease</button>
+    </div>
+
+    <h2>Review </h2>
+
+    <div class="reviews" style ="opacity: 1;">
+        <div class="review">
+            <img class="avt-img" src="avt.jpg" alt="" height="100px">
+            <h4 class="avt-name">bd Smith</h4>
+            <p class="avt-position">Web Developer</p>
+            <p class="avt-content">
+                Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Sunt eveniet consectetur quos    
+                iure qui exercitationem ducimus velit,
+            </p>            
+        </div>
+        <div class="button">
+            <button id="prev">Prev</button>
+            <button id="next">Next</button>
+            <button id="random">Random</button>
+        </div>
+    </div>
+
+    <div class="reviews2">
+        <div class="review2 current">
+            <img class="avt-img" src="avt.jpg" alt="" height="100px">
+            <h4 class="avt-name">bd Smith</h4>
+            <p class="avt-position">Web Developer</p>
+            <p class="avt-content">
+                Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Sunt eveniet consectetur quos    
+                iure qui exercitationem ducimus velit,
+            </p>            
+        </div>
+        <div class="review2">
+            <img class="avt-img" src="avt.jpg" alt="" height="100px">
+            <h4 class="avt-name">ad Smith</h4>
+            <p class="avt-position">Web Developer</p>
+            <p class="avt-content">
+                Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Sunt eveniet consectetur quos    
+                iure qui exercitationem ducimus velit,
+            </p>            
+        </div>
+        <div class="review2">
+            <img class="avt-img" src="avt.jpg" alt="" height="100px">
+            <h4 class="avt-name">cd Smith</h4>
+            <p class="avt-position">Web Developer</p>
+            <p class="avt-content">
+                Lorem ipsum dolor sit amet consectetur 
+                adipisicing elit. Sunt eveniet consectetur quos    
+                iure qui exercitationem ducimus velit,
+            </p>            
+        </div>
+        <div class="button">
+            <button id="prev2">Prev</button>
+            <button id="next2">Next</button>
+        </div>
     </div>
 
     <script src="app.js"></script>
