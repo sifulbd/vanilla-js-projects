@@ -284,7 +284,6 @@ avtRandomBtn.addEventListener('click', function(){
     showPerson(currentItem);
 })
 
-
 let slide = 0;
 const sliders = document.querySelectorAll('.review2');
 const numsliders = sliders.length;
