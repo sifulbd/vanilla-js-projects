@@ -19,6 +19,7 @@
 <body>
     <button class="btn">Move me</button> <br>
     <button class="btn2">Move me</button>
+    <input type="text" id="myText">
     <script>
 
         const btn = document.querySelector('.btn');      
@@ -159,9 +160,21 @@
         // }
         // console.log(footballpoint(0, 0, 1));
 
+        var addoOns  = ['name','dog'];
+function addVal(){
+        var inputS = document.getElementById("myText").value;
+        console.log(inputS);
+        var cpunt = addoOns.push(inputS);
+        // console.log(name.value);
+        // name.push(input);        
+        console.log(cpunt);
+        console.log(addoOns);
+}
+    
+        btn2.addEventListener('click', addVal)
+        </script>
 
-    </script>
+        <script src="xmlhttp-fetch.js"></script>
 
-    <script src="xmlhttp-fetch.js"></script>
 </body>
 </html>
