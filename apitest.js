@@ -15,5 +15,5 @@ add(5,5).then( val => {
     console.log("promise resolve", val)
 }).catch(err => {
     console.log("promise rejected", err)
-})
+}) 
 
