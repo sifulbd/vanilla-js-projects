@@ -69,3 +69,26 @@
 
 // const dog1 = new Dog(34,234,50);
 // const white = new Dog(255,255,255);
+
+
+class Pet {
+    constructor(name, age)  {
+        this.name = name;
+        this.age = age;
+    }
+    call() {
+        return `${this.name} is barking`;
+    }
+}
+class Dog extends Pet{
+    bark() {
+        return `${this.name} is barking`;
+    }
+}
+
+const dog = new Pet("algo", 29);
+
+const dog1 = new Dog("Tomi", 20);
+
+
+console.log(dog)
