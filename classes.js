@@ -81,6 +81,10 @@ class Pet {
     }
 }
 class Dog extends Pet{
+    constructor(name, age, lives){
+        super(name,age);
+        this.loves = lives;
+    }
     bark() {
         return `${this.name} is barking`;
     }
