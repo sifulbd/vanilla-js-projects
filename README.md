@@ -1,3 +1,3 @@
-The timer Project 
+The Accordion Project 
 
-https://sifulbd.github.io/weather-status/new_projects/accordion/index.html
+[Accordion](https://sifulbd.github.io/weather-status/new_projects/accordion/index.html)
