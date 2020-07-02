@@ -8,7 +8,6 @@ class Timer{
             this.onTick = callbacks.onTick;
             this.onComplete = callbacks.onComplete;
         }
-
         this.buttonStart.addEventListener('click', this.start);  
         this.pauseButton.addEventListener('click', this.pause);  
     }
@@ -59,7 +58,7 @@ const timer = new Timer(duration, buttonStart, pauseButton,{
     },
     onTick(timeRemaining) {
         circle.setAttribute('stroke-dashoffset', perimeter * timeRemaining / timeDuration - perimeter);
-        currentOffset = currentOffset - 1;
+        // currentOffset = currentOffset - 1;
     },
     onComplete() {
         console.log('timer completed')
