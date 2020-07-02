@@ -96,3 +96,5 @@ const dog1 = new Dog("Tomi", 20);
 
 
 console.log(dog)
+
+)
