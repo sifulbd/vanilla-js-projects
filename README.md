@@ -6,4 +6,4 @@ The Accordion Project
 
 [Secret Messenger](https://sifulbd.github.io/weather-status/new_projects/secret-message/)
 
-[Movie Compare API Peroject](https://sifulbd.github.io/weather-status/new_projects/movie-starter-kit/)
+[Movie Compare API Peroject](https://sifulbd.github.io/weather-status/new_projects/movies-starter-kit/)
