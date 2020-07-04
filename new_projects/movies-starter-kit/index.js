@@ -148,3 +148,4 @@ const movieTemplate = (movieDetails) => {
 }
 
 
+ 
