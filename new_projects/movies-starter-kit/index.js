@@ -10,6 +10,7 @@ const autocompleteConfig = {
   inputValue(movie) {
     return movie.Title
   }, 
+  
   async fetchApi (input){
     const response = await axios.get('http://www.omdbapi.com/', {
         params: {
