@@ -74,7 +74,7 @@ var view = {
                 todosli.appendChild(this.createlabel(todos.label));
                 todosli.appendChild(this.createInput(todos.name, todos.type, todos.placeholder));
                 todosli.appendChild(this.createValidationMessage(todos.validation_message));
-                todosul.appendChild(todosli);
+                todosul.appendChild(todosli); 
             }
             if(todos.type == 'radio') {
                 let mainoption = todos.options;
@@ -83,9 +83,9 @@ var view = {
                     for(var j = 0; j < mainoption.length; j++ ) {
                         radioOptions = mainoption[j];                         
                     }
-                    // for (let [key, value] of Object.entries(radioOptions)) {
-                    //     // console.log(`${key}: ${value}`); 
-                    // }
+                    for (let [key, value] of Object.entries(radioOptions)) {
+                        console.log(`${key}: ${value}`); 
+                    }
                     return radioOptions;
                 }  
                 function tod(obj) {
@@ -96,13 +96,8 @@ var view = {
                 // console.log(output);
           
                 todosli.appendChild(this.createlabel(todos.label));
-                todosli.appendChild(
-                    this.createRadio(
-                        todos.name, 
-                        todos.type, 
-                        rdOptions,
-                        this.createlabel(rdOptions, rdOptions)
-                    )
+                todosli.appendChild(this.createRadio(todos.name, todos.type,  rdOptions, this.createlabel(rdOptions, rdOptions))
+
                 );
                 todosli.appendChild(this.createlabel(rdOptions, rdOptions));
                 todosli.appendChild(this.createValidationMessage(todos.validation_message));
