@@ -37,7 +37,7 @@ var theTodo = {
         {
             name: 'internal_status',
             type: 'select',
-            label: 'Internal Status',
+            label: 'Internal Status ',
             required: true,
             validation_message: 'Internal Status is required',
             options: [
@@ -46,7 +46,23 @@ var theTodo = {
                     invalid: 'Invalid'
                 }
             ]
-        }
+        },
+        {
+            name: 'ocupation',
+            type: 'multi-select',
+            label: 'Ocupation',
+            placeholder: 'Select Ocupation',
+            required: true,
+            validation_message: 'Ocupation is required',
+            options: [
+                {
+                    doctor: 'Doctor',
+                    engineer: 'Engineer',
+                    teacher: 'Teacher',
+                    other: 'Other'
+                }
+            ]
+        },
     ],
     addItem: function (item) {
         this.todoList.push({
@@ -98,31 +114,58 @@ var view = {
                 for (let e of radioKeys) {
                     todosli.appendChild(this.createRadio(todos.name, todos.type, e, this.createlabel(e, e)));
                     todosli.appendChild(this.createlabel(e, e));
-                    todosli.appendChild(this.createValidationMessage(todos.validation_message));
-                    todosul.appendChild(todosli);
                 }
-              
-                // function todor(mainotion){
-                //     var radioOptions = radioOptions;
-                //     for(var j = 0; j < mainoption.length; j++ ) {
-                //         radioOptions = mainoption[j];                          
-                //     }
-                //     return radioOptions;
-                // }  
+                todosli.appendChild(this.createValidationMessage(todos.validation_message));
+                todosul.appendChild(todosli);
+            }
+            
+            if(todos.type == 'select') {
+                let mainoption = todos.options[0];
+                todosli.appendChild(this.createlabel(todos.label));     
+                // todosli.appendChild(this.createSelect(todos.name));
 
-                // const rdOptions = todor();
-                // console.log(rdOptions);
+                var selectList = document.createElement("select");
+                selectList.id = "mySelect";
+                todosli.appendChild(selectList);
 
-                // function ob(rdOptions) {
-                //     var element;
-                //     for (element of Object.entries(rdOptions)){ 
-                //         const key = element[0], 
-                //         value = element[1] ;
-                //     }
-                // }
-                // console.log(ob());
-         
+                let selectKeys = [];           
+                Object.keys(mainoption).map(function(prop) {
+                    selectKeys.push(prop);
+                });
+                for (let e of selectKeys) {
+                    var option = document.createElement("option");
+                    option.value = e;
+                    option.text = e;
+                    selectList.appendChild(option);
+                    // todosli.appendChild(this.createSelect(this.createOption(e)))
+                }
+                
+                todosul.appendChild(todosli);
+                todosli.appendChild(this.createValidationMessage(todos.validation_message));
+            }
 
+            // multi
+            if(todos.type == 'multi-select') {
+                let mainoption = todos.options[0];
+                todosli.appendChild(this.createlabel(todos.label));     
+
+                var selectList = document.createElement("select");
+                selectList.id = "multiSelect";
+                selectList.setAttribute('multiple', '');
+                todosli.appendChild(selectList);
+                let selectKeys = [];           
+                Object.keys(mainoption).map(function(prop) {
+                    selectKeys.push(prop);
+                });
+                for (let e of selectKeys) {
+                    var option = document.createElement("option");
+                    option.value = e;
+                    option.text = e;
+                    selectList.appendChild(option);
+                }
+                
+                todosul.appendChild(todosli);
+                todosli.appendChild(this.createValidationMessage(todos.validation_message));
             }
 
         }
@@ -144,6 +187,12 @@ var view = {
         label.setAttribute('for', lvlfor)
         return label;
     },
+    createOption: function(inputOption) {
+        var option = document.createElement('option');
+        option.textContent = inputOption;
+        option.setAttribute('multiple', '');
+        return option;
+    },
     createInput: function(name, type, placeholder) {
         var input = document.createElement('input');
         input.classList.add('form-control');
@@ -160,6 +209,12 @@ var view = {
         radio.setAttribute("value", options);
         return radio;
     },
+    // createSelect: function(name, options) {
+    //     var select = document.createElement('select');
+    //     select.classList.add('form-control');
+    //     select.setAttribute("name", name);
+    //     return select;
+    // },
     createValidationMessage: function(message) {
         var span = document.createElement('span');
         span.textContent = message;
