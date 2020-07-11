@@ -34,6 +34,19 @@ var theTodo = {
                 }
             ]
         },
+        {
+            name: 'internal_status',
+            type: 'select',
+            label: 'Internal Status',
+            required: true,
+            validation_message: 'Internal Status is required',
+            options: [
+                {
+                    valid: 'Valid',
+                    invalid: 'Invalid'
+                }
+            ]
+        }
     ],
     addItem: function (item) {
         this.todoList.push({
@@ -59,14 +72,13 @@ var view = {
             var todosli = document.createElement('div');
             todosli.classList.add('form-group');
             var todos = theTodo.todoList[i];
-            console.log(todos);
             if(todos.type == 'info_html') {
                 todosli.appendChild(this.createTitle(todos.content));
                 todosul.appendChild(todosli);
             }
             if(todos.type == 'text') {
                 todosli.appendChild(this.createlabel(todos.label));
-                todosli.appendChild(this.createInput(todos.name, todos.placeholder));
+                todosli.appendChild(this.createInput(todos.name, todos.type, todos.placeholder));
                 todosli.appendChild(this.createValidationMessage(todos.validation_message));
                 todosul.appendChild(todosli);
             }
@@ -77,31 +89,40 @@ var view = {
                 todosul.appendChild(todosli); 
             }
             if(todos.type == 'radio') {
-                let mainoption = todos.options;
-                function todor(mainotion){
-                    var radioOptions;
-                    for(var j = 0; j < mainoption.length; j++ ) {
-                        radioOptions = mainoption[j];                         
-                    }
-                    for (let [key, value] of Object.entries(radioOptions)) {
-                        console.log(`${key}: ${value}`); 
-                    }
-                    return radioOptions;
-                }  
-                function tod(obj) {
-                    var keys = Object.keys(obj);  
-                    return keys;
+                let mainoption = todos.options[0];
+                todosli.appendChild(this.createlabel(todos.label));     
+                let radioKeys = [];           
+                Object.keys(mainoption).map(function(prop) {
+                   radioKeys.push(prop)
+                });
+                for (let e of radioKeys) {
+                    todosli.appendChild(this.createRadio(todos.name, todos.type, e, this.createlabel(e, e)));
+                    todosli.appendChild(this.createlabel(e, e));
+                    todosli.appendChild(this.createValidationMessage(todos.validation_message));
+                    todosul.appendChild(todosli);
                 }
-                const rdOptions = todor();
-                // console.log(output);
-          
-                todosli.appendChild(this.createlabel(todos.label));
-                todosli.appendChild(this.createRadio(todos.name, todos.type,  rdOptions, this.createlabel(rdOptions, rdOptions))
+              
+                // function todor(mainotion){
+                //     var radioOptions = radioOptions;
+                //     for(var j = 0; j < mainoption.length; j++ ) {
+                //         radioOptions = mainoption[j];                          
+                //     }
+                //     return radioOptions;
+                // }  
 
-                );
-                todosli.appendChild(this.createlabel(rdOptions, rdOptions));
-                todosli.appendChild(this.createValidationMessage(todos.validation_message));
-                todosul.appendChild(todosli);
+                // const rdOptions = todor();
+                // console.log(rdOptions);
+
+                // function ob(rdOptions) {
+                //     var element;
+                //     for (element of Object.entries(rdOptions)){ 
+                //         const key = element[0], 
+                //         value = element[1] ;
+                //     }
+                // }
+                // console.log(ob());
+         
+
             }
 
         }
@@ -155,5 +176,19 @@ var view = {
     //         }
     //     });
     // }
+
+    //    getCheckedValue:  function(radioObj, name) {
+    //         for (j = 0; j < radioObj.rows.length; ++j) {
+    //             for (k = 0; k < radioObj.cells.length; ++k) {
+    //                 var radioChoice = document.getElementById(name + "_" + k);
+    //                 if (radioChoice.checked) {
+    //                     return radioChoice.value;
+    //                 }
+    //             }
+    //         }
+    //         return "";
+    //     }
 }
 view.displayTodotext(); 
+
+
