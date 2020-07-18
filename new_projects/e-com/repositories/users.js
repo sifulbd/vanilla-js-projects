@@ -1,7 +1,6 @@
 const fs = require('fs');
 const crypto = require('crypto');
 
-
 class createUserRepository {
     constructor(filename) {
         if(!filename) {
@@ -21,7 +20,6 @@ class createUserRepository {
             })
         ) 
     }  
-
     async create(attrs) {
         attrs.id = this.randomId();
         const records = await this.getAll();
@@ -29,19 +27,55 @@ class createUserRepository {
         //
         await this.writeAll(records);
     }
-
     async writeAll(records) {
         await fs.promises.writeFile(this.filename, JSON.stringify(records, null, 2));
     }
-
+    
     randomId() {
         return crypto.randomBytes(4).toString('hex');
+    }
+
+    async getUser(id) {
+        const record = await this.getAll();
+        return record.find(record => record.id === id);
+    }
+
+    async delete(id) {
+        const records = await this.getAll();
+        const deleteId = records.filter( record => record.id !== id);
+        await this.writeAll(deleteId);
+    }
+
+    async update(id, attrs) {
+        const records = await this.getAll();
+        const record = records.find(record => record.id === id);
+        if(!record) {
+            throw new Error ('Record not found');
+        }
+        Object.assign(record, attrs);
+        await this.writeAll(records);
+    }
+    async getOneBy(filters) {
+        const records = await this.getAll();
+        
+        for(let record of records) {
+            let found = true;
+
+            for(let key in filters) {
+                if(record[key] !== filters[key]) {
+                    found = false;
+                }
+            }
+            if(found) {
+                return record;
+            }
+        }
+
     }
 }
 const test = async() => {
     const repo = new createUserRepository('user.json');
-    repo.create({emal: 'test@fmail.com', pass: 'password'});
-    const users = await repo.getAll();
-    console.log(users)
+    const user = await repo.getOneBy({Password:'iampassword'});
+    console.log(user);
 }
-test();
+module.exports = new createUserRepository('users.json');

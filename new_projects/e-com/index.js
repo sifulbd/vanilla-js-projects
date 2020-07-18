@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const repoUser = require('./repositories/users');
 
 const app = express();
 
@@ -21,11 +22,20 @@ app.get('/', (req,res) => {
     );
 });
 
-app.post('/', (req,res) => {
-    console.log(req.body);
-    res.send('hello accoint');
+app.post('/', async (req,res) => {
+    const {email, password, confirmpasswprd} = req.body;
+
+    const existingUser = await repoUser.getOneBy({ email });
+    if(existingUser) {
+        return res.send('Email in use');
+    }
+    if(password !== confirmpasswprd) {
+        return res.send ('Password didnot match');
+    }
+    console.log(email);
+    res.send('Account Created');
 });
 
-app.listen(3000,() =>{
+app.listen(3001,() =>{
     console.log("listening..")
 });
