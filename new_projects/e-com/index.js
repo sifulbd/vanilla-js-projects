@@ -1,16 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
 const repoUser = require('./repositories/users');
-
 const app = express();
 
 app.use(
     bodyParser.urlencoded({extended:true})
 );
+app.use(
+    cookieSession({
+        keys: ['dfghdftr54353']
+    })
+);
 
 app.get('/', (req,res) => {
     res.send(
         `<div>
+        id is ${req.session.userId}
             <form method="POST">
                 <input name="email" placeholder ="Email">
                 <input name="password" placeholder ="Password">
@@ -32,7 +38,11 @@ app.post('/', async (req,res) => {
     if(password !== confirmpasswprd) {
         return res.send ('Password didnot match');
     }
-    console.log(email);
+    
+    const user = await repoUser.create({email, password});
+
+    req.session.userId === user.id; // 
+
     res.send('Account Created');
 });
 
