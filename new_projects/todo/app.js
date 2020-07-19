@@ -1,6 +1,6 @@
 
-var theTodo = {
-    todoList: [
+var theForm = {
+    tformItemList: [
         {
             type: 'info_html',
             content: '<h3>Please fill up the following form</h3>'
@@ -64,68 +64,56 @@ var theTodo = {
             ]
         },
     ],
-    addItem: function (item) {
-        this.todoList.push({
-            todoText: item,
-        }); 
-    },
 }
 
-var handler = {
-    addnewTodo: function() {
-        var todoinput = document.getElementById('todoinput');
-        theTodo.addItem(todoinput.value);
-        todoinput.value = ' ';
-        view.displayTodotext();
-    },
-};
+
 
 var view = {
-    displayTodotext: function() {
-        var todosul = document.querySelector('#form');
-        todosul.innerHTML = '';
+    displayForm: function() {
+        var formDiv = document.querySelector('#form');
+        formDiv.innerHTML = '';
 
-        for(var i = 0; i < theTodo.todoList.length; i++ ) {
-            var todosli = document.createElement('div');
-            todosli.classList.add('form-group');
-            var todos = theTodo.todoList[i];
-            if(todos.type == 'info_html') {
-                todosli.appendChild(this.createTitle(todos.content));
-                todosul.appendChild(todosli);
+        for(var i = 0; i < theForm.tformItemList.length; i++ ) {
+            var formGroup = document.createElement('div');
+            formGroup.classList.add('form-group');
+            var formContent = theForm.tformItemList[i];
+            if(formContent.type == 'info_html') {
+                formGroup.appendChild(this.createTitle(formContent.content));
+                formDiv.appendChild(formGroup);
             }
-            if(todos.type == 'text') {
-                todosli.appendChild(this.createlabel(todos.label));
-                todosli.appendChild(this.createInput(todos.name, todos.type, 'fname', todos.placeholder));
-                todosli.appendChild(this.createValidationMessage(todos.validation_message));
-                todosul.appendChild(todosli);
+            if(formContent.type == 'text') {
+                formGroup.appendChild(this.createlabel(formContent.label));
+                formGroup.appendChild(this.createInput(formContent.name, formContent.type, 'fname', formContent.placeholder));
+                formGroup.appendChild(this.createValidationMessage(formContent.validation_message));
+                formDiv.appendChild(formGroup);
             }
-            if(todos.type == 'email') {
-                todosli.appendChild(this.createlabel(todos.label));
-                todosli.appendChild(this.createInput(todos.name, todos.type, 'femail', todos.placeholder));
-                todosli.appendChild(this.createValidationMessage(todos.validation_message));
-                todosul.appendChild(todosli); 
+            if(formContent.type == 'email') {
+                formGroup.appendChild(this.createlabel(formContent.label));
+                formGroup.appendChild(this.createInput(formContent.name, formContent.type, 'femail', formContent.placeholder));
+                formGroup.appendChild(this.createValidationMessage(formContent.validation_message));
+                formDiv.appendChild(formGroup); 
             }
-            if(todos.type == 'radio') {
-                let mainoption = todos.options[0];
-                todosli.appendChild(this.createlabel(todos.label));     
+            if(formContent.type == 'radio') {
+                let mainoption = formContent.options[0];
+                formGroup.appendChild(this.createlabel(formContent.label));     
                 let radioKeys = [];           
                 Object.keys(mainoption).map(function(prop) {
                    radioKeys.push(prop)
                 });
                 for (let e of radioKeys) {
-                    todosli.appendChild(this.createRadio(todos.name, todos.type, e, this.createlabel(e, e)));
-                    todosli.appendChild(this.createlabel(e, e));
+                    formGroup.appendChild(this.createRadio(formContent.name, formContent.type, e, this.createlabel(e, e)));
+                    formGroup.appendChild(this.createlabel(e, e));
                 }
-                todosli.appendChild(this.createValidationMessage(todos.validation_message));
-                todosul.appendChild(todosli);
+                formGroup.appendChild(this.createValidationMessage(formContent.validation_message));
+                formDiv.appendChild(formGroup);
             }
             
-            if(todos.type == 'select') {
-                let mainoption = todos.options[0];
-                todosli.appendChild(this.createlabel(todos.label));     
+            if(formContent.type == 'select') {
+                let mainoption = formContent.options[0];
+                formGroup.appendChild(this.createlabel(formContent.label));     
                 var selectList = document.createElement("select");
                 selectList.id = "mySelect";
-                todosli.appendChild(selectList);
+                formGroup.appendChild(selectList);
                 let selectKeys = [];           
                 Object.keys(mainoption).map(function(prop) {
                     selectKeys.push(prop);
@@ -136,18 +124,18 @@ var view = {
                     option.text = e;
                     selectList.appendChild(option);
                 }                
-                todosul.appendChild(todosli);
-                todosli.appendChild(this.createValidationMessage(todos.validation_message));
+                formDiv.appendChild(formGroup);
+                formGroup.appendChild(this.createValidationMessage(formContent.validation_message));
             }
 
             // multi
-            if(todos.type == 'multi-select') {
-                let mainoption = todos.options[0];
-                todosli.appendChild(this.createlabel(todos.label));   
+            if(formContent.type == 'multi-select') {
+                let mainoption = formContent.options[0];
+                formGroup.appendChild(this.createlabel(formContent.label));   
                 var selectList = document.createElement("select");
                 selectList.id = "multiSelect";
                 selectList.setAttribute('multiple', '');
-                todosli.appendChild(selectList);
+                formGroup.appendChild(selectList);
                 let selectKeys = [];           
                 Object.keys(mainoption).map(function(prop) {
                     selectKeys.push(prop);
@@ -158,15 +146,15 @@ var view = {
                     option.text = e;
                     selectList.appendChild(option);
                 }                
-                todosul.appendChild(todosli);
-                todosli.appendChild(this.createValidationMessage(todos.validation_message));
+                formDiv.appendChild(formGroup);
+                formGroup.appendChild(this.createValidationMessage(formContent.validation_message));
             }
 
         }
         var submitButton = document.createElement('button');
         submitButton.textContent = 'Submit';
         submitButton.className = 'submitButton';
-        todosul.appendChild(submitButton);
+        formDiv.appendChild(submitButton);
 
     },
     createDeletebutton: function() {
@@ -217,7 +205,7 @@ var view = {
 
 }
 
-view.displayTodotext(); 
+view.displayForm(); 
 
 var submitBtn = document.querySelector('.submitButton');
 submitBtn.addEventListener('click', function(event){    
