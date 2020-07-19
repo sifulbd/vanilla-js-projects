@@ -1,6 +1,6 @@
 
 var theForm = {
-    tformItemList: [
+    formItemList: [
         {
             type: 'info_html',
             content: '<h3>Please fill up the following form</h3>'
@@ -73,10 +73,10 @@ var view = {
         var formDiv = document.querySelector('#form');
         formDiv.innerHTML = '';
 
-        for(var i = 0; i < theForm.tformItemList.length; i++ ) {
+        for(var i = 0; i < theForm.formItemList.length; i++ ) {
             var formGroup = document.createElement('div');
             formGroup.classList.add('form-group');
-            var formContent = theForm.tformItemList[i];
+            var formContent = theForm.formItemList[i];
             if(formContent.type == 'info_html') {
                 formGroup.appendChild(this.createTitle(formContent.content));
                 formDiv.appendChild(formGroup);
