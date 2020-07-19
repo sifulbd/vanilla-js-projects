@@ -84,6 +84,7 @@ var view = {
     displayTodotext: function() {
         var todosul = document.querySelector('#form');
         todosul.innerHTML = '';
+
         for(var i = 0; i < theTodo.todoList.length; i++ ) {
             var todosli = document.createElement('div');
             todosli.classList.add('form-group');
@@ -94,13 +95,13 @@ var view = {
             }
             if(todos.type == 'text') {
                 todosli.appendChild(this.createlabel(todos.label));
-                todosli.appendChild(this.createInput(todos.name, todos.type, todos.placeholder));
+                todosli.appendChild(this.createInput(todos.name, todos.type, 'fname', todos.placeholder));
                 todosli.appendChild(this.createValidationMessage(todos.validation_message));
                 todosul.appendChild(todosli);
             }
             if(todos.type == 'email') {
                 todosli.appendChild(this.createlabel(todos.label));
-                todosli.appendChild(this.createInput(todos.name, todos.type, todos.placeholder));
+                todosli.appendChild(this.createInput(todos.name, todos.type, 'femail', todos.placeholder));
                 todosli.appendChild(this.createValidationMessage(todos.validation_message));
                 todosul.appendChild(todosli); 
             }
@@ -122,12 +123,9 @@ var view = {
             if(todos.type == 'select') {
                 let mainoption = todos.options[0];
                 todosli.appendChild(this.createlabel(todos.label));     
-                // todosli.appendChild(this.createSelect(todos.name));
-
                 var selectList = document.createElement("select");
                 selectList.id = "mySelect";
                 todosli.appendChild(selectList);
-
                 let selectKeys = [];           
                 Object.keys(mainoption).map(function(prop) {
                     selectKeys.push(prop);
@@ -137,9 +135,7 @@ var view = {
                     option.value = e;
                     option.text = e;
                     selectList.appendChild(option);
-                    // todosli.appendChild(this.createSelect(this.createOption(e)))
-                }
-                
+                }                
                 todosul.appendChild(todosli);
                 todosli.appendChild(this.createValidationMessage(todos.validation_message));
             }
@@ -147,8 +143,7 @@ var view = {
             // multi
             if(todos.type == 'multi-select') {
                 let mainoption = todos.options[0];
-                todosli.appendChild(this.createlabel(todos.label));     
-
+                todosli.appendChild(this.createlabel(todos.label));   
                 var selectList = document.createElement("select");
                 selectList.id = "multiSelect";
                 selectList.setAttribute('multiple', '');
@@ -162,13 +157,17 @@ var view = {
                     option.value = e;
                     option.text = e;
                     selectList.appendChild(option);
-                }
-                
+                }                
                 todosul.appendChild(todosli);
                 todosli.appendChild(this.createValidationMessage(todos.validation_message));
             }
 
         }
+        var submitButton = document.createElement('button');
+        submitButton.textContent = 'Submit';
+        submitButton.className = 'submitButton';
+        todosul.appendChild(submitButton);
+
     },
     createDeletebutton: function() {
         var deleteButton = document.createElement('button');
@@ -193,9 +192,9 @@ var view = {
         option.setAttribute('multiple', '');
         return option;
     },
-    createInput: function(name, type, placeholder) {
+    createInput: function(name, type, customClass, placeholder) {
         var input = document.createElement('input');
-        input.classList.add('form-control');
+        input.classList.add('form-control', customClass);
         input.setAttribute("name", name);
         input.setAttribute("type", type);
         input.setAttribute("placeholder", placeholder);
@@ -209,12 +208,6 @@ var view = {
         radio.setAttribute("value", options);
         return radio;
     },
-    // createSelect: function(name, options) {
-    //     var select = document.createElement('select');
-    //     select.classList.add('form-control');
-    //     select.setAttribute("name", name);
-    //     return select;
-    // },
     createValidationMessage: function(message) {
         var span = document.createElement('span');
         span.textContent = message;
@@ -222,28 +215,19 @@ var view = {
         return span;
     },
 
-    // setEventlistner: function() {
-    //     var todoUl = document.querySelector('ul');
-    //     todoUl.addEventListener('click', function(event){    
-    //         var clicketPositon = event.target;
-    //         if(clicketPositon.className === 'deleteButton') {
-    //             handler.deleteTodo(parseInt(clicketPositon.parentNode.id));
-    //         }
-    //     });
-    // }
-
-    //    getCheckedValue:  function(radioObj, name) {
-    //         for (j = 0; j < radioObj.rows.length; ++j) {
-    //             for (k = 0; k < radioObj.cells.length; ++k) {
-    //                 var radioChoice = document.getElementById(name + "_" + k);
-    //                 if (radioChoice.checked) {
-    //                     return radioChoice.value;
-    //                 }
-    //             }
-    //         }
-    //         return "";
-    //     }
 }
+
 view.displayTodotext(); 
 
+var submitBtn = document.querySelector('.submitButton');
+submitBtn.addEventListener('click', function(event){    
+    const fname = document.querySelector('.fname').value;
+    const femail = document.querySelector('.femail').value;
+    const radio = document.querySelector('input[name="status"]:checked').value;
+    const selectDrop = document.getElementById("mySelect");
+    const selectopt = selectDrop.options[selectDrop.selectedIndex].value;
+    const selectMultiDrop = document.getElementById("multiSelect");
+    var selectMultiOpt = selectMultiDrop.options[selectMultiDrop.selectedIndex].value;
+    console.log(fname, femail, radio, selectopt, selectMultiOpt);
+});
 
