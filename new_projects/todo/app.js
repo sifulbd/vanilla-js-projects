@@ -66,8 +66,6 @@ var theForm = {
     ],
 }
 
-
-
 var view = {
     displayForm: function() {
         var formDiv = document.querySelector('#form');
@@ -209,13 +207,54 @@ view.displayForm();
 
 var submitBtn = document.querySelector('.submitButton');
 submitBtn.addEventListener('click', function(event){    
-    const fname = document.querySelector('.fname').value;
-    const femail = document.querySelector('.femail').value;
-    const radio = document.querySelector('input[name="status"]:checked').value;
-    const selectDrop = document.getElementById("mySelect");
-    const selectopt = selectDrop.options[selectDrop.selectedIndex].value;
-    const selectMultiDrop = document.getElementById("multiSelect");
+    var fname = document.querySelector('.fname').value;
+    var femail = document.querySelector('.femail').value;
+    var radio = document.querySelector('input[name="status"]:checked').value;
+    var selectDrop = document.getElementById("mySelect");
+    var selectopt = selectDrop.options[selectDrop.selectedIndex].value;
+    var selectMultiDrop = document.getElementById("multiSelect");
     var selectMultiOpt = selectMultiDrop.options[selectMultiDrop.selectedIndex].value;
+
+    const output = `
+    <table>
+        <tr>
+            <th>Info </th>
+            <th>Outputs </th>
+        </tr>
+        <tr>
+            <td>Your Name is: </td>
+            <td>${fname}</td>
+        </tr>
+        <tr>
+            <td>Your Email is: </td>
+            <td>${femail}</td>
+        </tr>
+        <tr>
+            <td>Radio Status: </td>
+            <td>${radio}</td>
+        </tr>
+        <tr>
+            <td>Internal Status: </td>
+            <td>${selectopt}</td>
+        </tr>
+        <tr>
+            <td>Occupation: </td>
+            <td>${selectMultiOpt}</td>
+        </tr>
+
+    </table>
+    `
+    const table = document.getElementById('output').innerHTML = output;
+
+    document.querySelector('.fname').value = '';
+    document.querySelector('.femail').value = '' ;
+    document.querySelector('input[name="status"]:checked').value = '';
+    selectDrop.options[selectDrop.selectedIndex].value = '';
+    selectMultiDrop.options[selectMultiDrop.selectedIndex].value ='';
+
+
     console.log(fname, femail, radio, selectopt, selectMultiOpt);
+
+
 });
 
