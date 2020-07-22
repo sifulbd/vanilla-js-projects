@@ -1,12 +1,12 @@
 The Accordion Project 
 
-[Accordion](https://sifulbd.github.io/weather-status/new_projects/accordion/index.html)
+[Accordion](https://sifulbd.github.io/vanilla-js-projects/new_projects/accordion/index.html)
 
-[Timer counter](https://sifulbd.github.io/weather-status/new_projects/time-counter/)
+[Timer counter](https://sifulbd.github.io/vanilla-js-projects/new_projects/time-counter/)
 
-[Secret Messenger](https://sifulbd.github.io/weather-status/new_projects/secret-message/)
+[Secret Messenger](https://sifulbd.github.io/vanilla-js-projects/new_projects/secret-message/)
 
-[Movie Compare API Peroject](https://sifulbd.github.io/weather-status/new_projects/movies-starter-kit/)
+[Movie Compare API Peroject](https://sifulbd.github.io/vanilla-js-projects/new_projects/movies-starter-kit/)
 
 [Percentage Calculator](https://sifulbd.github.io/JavaScript-Intermediate-projects/InterstCalculator/)
 
