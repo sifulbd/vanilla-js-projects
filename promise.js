@@ -31,7 +31,7 @@ const fakeRequest = (url) => {
 //USING then
 
 fakeRequest('/user')
-.then((res) => {const id = res.data[0].id;return fakeRequest(`/users/${id}`);})
-.then((res) => {const title = res.data.topPost;return fakeRequest(`/posts/${title}`);})
+.then((res) => {const id = res.data[0].id; return fakeRequest(`/users/${id}`);})
+.then((res) => {const title = res.data.topPost; return fakeRequest(`/posts/${title}`);})
 .then((res) => {console.log(res.data.title);})
 .catch((res) => {console.log(res.status);console.log("it rejected")});
