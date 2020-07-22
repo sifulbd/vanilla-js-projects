@@ -7,7 +7,7 @@ function maxWordLength(word){
            maxWord = wordsplit[i];
            maxLength = wordsplit[i].length;
 
-        }
+        } 
     }
     return maxWord;    
 }
