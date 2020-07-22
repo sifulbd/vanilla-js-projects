@@ -1,5 +1,7 @@
 The Accordion Project 
 
+[Parcentage Calculator](https://sifulbd.github.io/JavaScript-Intermediate-projects/percentageCalculator/)
+
 [Accordion](https://sifulbd.github.io/vanilla-js-projects/new_projects/accordion/index.html)
 
 [Timer counter](https://sifulbd.github.io/vanilla-js-projects/new_projects/time-counter/)
