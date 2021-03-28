@@ -245,12 +245,12 @@ submitBtn.addEventListener('click', function(event){
     </table>
     `
     const table = document.getElementById('output').innerHTML = output;
-
     document.querySelector('.fname').value = '';
     document.querySelector('.femail').value = '' ;
     document.querySelector('input[name="status"]:checked').value = '';
     selectDrop.options[selectDrop.selectedIndex].value = '';
     selectMultiDrop.options[selectMultiDrop.selectedIndex].value ='';
+    
     console.log(fname, femail, radio, selectopt, selectMultiOpt);
 
 
