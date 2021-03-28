@@ -251,8 +251,6 @@ submitBtn.addEventListener('click', function(event){
     document.querySelector('input[name="status"]:checked').value = '';
     selectDrop.options[selectDrop.selectedIndex].value = '';
     selectMultiDrop.options[selectMultiDrop.selectedIndex].value ='';
-
-
     console.log(fname, femail, radio, selectopt, selectMultiOpt);
 
 
